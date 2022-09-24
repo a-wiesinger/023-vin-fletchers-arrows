@@ -2,9 +2,9 @@ namespace _023_vin_fletchers_arrows.Models
 {
     public class Arrow
     {
-        public Arrowhead _aHead;
-        public Fletching _aFletching;
-        public float _sLength;
+        private readonly Arrowhead _aHead;
+        private readonly Fletching _aFletching;
+        private float _sLength;
 
         public Arrow()
         {
@@ -33,6 +33,10 @@ namespace _023_vin_fletchers_arrows.Models
             TurkeyFeathers = 5,
             GooseFeathers = 3
         }
+
+        public Arrowhead GetArrowhead() => _aHead;
+        public Fletching GetFletching() => _aFletching;
+        public float GetArrowLength() => _sLength;
 
         public float GetCost(Arrowhead aHead, Fletching aFletching, float sLength)
         {

@@ -3,7 +3,6 @@
  * :: Classes ::
  */
 
-using System.Globalization;
 using _023_vin_fletchers_arrows.Models;
 
 // Starting stuff
@@ -97,8 +96,8 @@ float ShaftLengthSelect()
 }
 
 // Get cost
-float arrowCost = arrow.GetCost(arrow._aHead, arrow._aFletching, arrow._sLength);
+float arrowCost = arrow.GetCost(arrow.GetArrowhead(), arrow.GetFletching(), arrow.GetArrowLength());
 
 // Display final stats on created arrow
-Console.WriteLine($"Well, here is your arrow with {arrow._aHead} head, {arrow._aFletching} fletching, and it's {arrow._sLength}cm long.");
+Console.WriteLine($"Well, here is your arrow with {arrow.GetArrowhead()} head, {arrow.GetFletching()} fletching, and it's {arrow.GetArrowLength()}cm long.");
 Console.WriteLine($"That'll be {arrowCost.ToString("N2")} gold please!");
