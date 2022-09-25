@@ -96,8 +96,8 @@ float ShaftLengthSelect()
 }
 
 // Get cost
-float arrowCost = arrow.GetCost(arrow.GetArrowhead(), arrow.GetFletching(), arrow.GetArrowLength());
+float arrowCost = arrow.GetCost(arrow.ArrowheadCore, arrow.FletchingCore, arrow.SLengthCore);
 
 // Display final stats on created arrow
-Console.WriteLine($"Well, here is your arrow with {arrow.GetArrowhead()} head, {arrow.GetFletching()} fletching, and it's {arrow.GetArrowLength()}cm long.");
+Console.WriteLine($"Well, here is your arrow with {Convert.ToString(arrow.ArrowheadCore).ToLower()} head, {Convert.ToString(arrow.FletchingCore).ToLower()} fletching, and it's {arrow.SLengthCore}cm long.");
 Console.WriteLine($"That'll be {arrowCost.ToString("N2")} gold please!");

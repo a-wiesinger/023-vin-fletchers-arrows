@@ -2,20 +2,19 @@ namespace _023_vin_fletchers_arrows.Models
 {
     public class Arrow
     {
-        private readonly Arrowhead _aHead;
-        private readonly Fletching _aFletching;
-        private float _sLength;
+        // private readonly Arrowhead _aHead;
+        // private readonly Fletching _aFletching;
+        // private float _sLength;
 
-        public Arrow()
-        {
-            
-        }
+        public Arrowhead ArrowheadCore { get; set; }
+        public Fletching FletchingCore { get; set; }
+        public float SLengthCore { get; set; }
 
         public Arrow(Arrowhead aHead, Fletching aFletching, float sLength)
         {
-            _aHead = aHead;
-            _aFletching = aFletching;
-            _sLength = sLength;
+            ArrowheadCore = aHead;
+            FletchingCore = aFletching;
+            SLengthCore = sLength;
         }
         
         public enum Arrowhead
@@ -33,10 +32,6 @@ namespace _023_vin_fletchers_arrows.Models
             TurkeyFeathers = 5,
             GooseFeathers = 3
         }
-
-        public Arrowhead GetArrowhead() => _aHead;
-        public Fletching GetFletching() => _aFletching;
-        public float GetArrowLength() => _sLength;
 
         public float GetCost(Arrowhead aHead, Fletching aFletching, float sLength)
         {
