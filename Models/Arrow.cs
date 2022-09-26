@@ -12,7 +12,19 @@ namespace _023_vin_fletchers_arrows.Models
             FletchingCore = FletchingSelect();
             SLengthCore = ShaftLengthSelect();
         }
-        
+
+        public Arrow(float num)
+        {
+            
+        }
+
+        public Arrow(Arrowhead arrowhead, Fletching fletching, float length)
+        {
+            ArrowheadCore = arrowhead;
+            FletchingCore = fletching;
+            SLengthCore = length;
+        }
+
         public enum Arrowhead
         {
             // Numbers are the cost
@@ -28,7 +40,14 @@ namespace _023_vin_fletchers_arrows.Models
             TurkeyFeathers = 5,
             GooseFeathers = 3
         }
+
+        // Create pre-defined arrows
+        public static Arrow CreateBeginnerArrow() => new Arrow(Arrowhead.Wood, Fletching.GooseFeathers, 75);
         
+        public static Arrow CreateMarksmanArrow() => new Arrow(Arrowhead.Steel, Fletching.GooseFeathers, 65);
+
+        public static Arrow CreateEliteArrow() => new Arrow(Arrowhead.Steel, Fletching.Plastic, 95);
+
         // Arrowhead selection
         private Arrowhead ArrowheadSelect()
         {
@@ -56,7 +75,7 @@ namespace _023_vin_fletchers_arrows.Models
             Console.ReadLine();
             ArrowheadSelect();
             
-            // Req return statement
+            // Catch-all return
             return Arrowhead.Steel;
         }
 
