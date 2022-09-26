@@ -9,7 +9,9 @@ using _023_vin_fletchers_arrows.Models;
 Console.Title = "Vin Fletcher's Arrows";
 Console.Clear();
 
-Arrow arrow = new Arrow(56); // TODO - It's working!! But this is a dumb workaround. Fix it. :)
+// Initialize Arrow
+Arrow arrow = new Arrow();
+string userArrowType = arrow.ArrowType[3];
 
 // Check to see if user wants a pre-defined arrow or a custom one
 Console.WriteLine("Here are your options for creating an arrow today: ");
@@ -21,32 +23,33 @@ Console.WriteLine("-------------------------------------------------------------
 Console.Write("Please enter your selection by typing the number of your desired arrow choice: ");
 string? userChoice = Console.ReadLine();
 
-if (userChoice is not null)
+if (userChoice is not null && Convert.ToInt16(userChoice) > 0 && Convert.ToInt16(userChoice) < 5)
 {
     switch (userChoice)
     {
-        case "1": // TODO - Able to force through property changes, but need to change through static methods
+        case "1":
             arrow = Arrow.CreateBeginnerArrow();
+            userArrowType = arrow.ArrowType[0];
             break;
         case "2":
             arrow = Arrow.CreateMarksmanArrow();
+            userArrowType = arrow.ArrowType[1];
             break;
         case "3":
             arrow = Arrow.CreateEliteArrow();
+            userArrowType = arrow.ArrowType[2];
             break;
         case "4":
-            arrow = new Arrow();
+            arrow = new Arrow("custom");
+            userArrowType = arrow.ArrowType[3];
             break;
     }
 }
-else
-{
-    arrow = new Arrow();
-}
-
-
-
 
 // Display final stats on custom-created arrow
-    Console.WriteLine($"Well, here is your arrow with {Convert.ToString(arrow.ArrowheadCore).ToLower()} head, {Convert.ToString(arrow.FletchingCore).ToLower()} fletching, and it's {arrow.SLengthCore}cm long.");
-    Console.WriteLine($"That'll be {arrow.GetCost()} gold please!");
+string arrowHeadResult = arrow.ArrowheadCore.ToString().ToLower();
+string arrowFletchingResult = arrow.FletchingCore.ToString().ToLower();
+string arrowLengthResult = arrow.SLengthCore.ToString("N2");
+
+Console.WriteLine($"Well, here is your {userArrowType} arrow with {arrowHeadResult} head, {arrowFletchingResult} fletching, and it's {arrowLengthResult}cm long.");
+Console.WriteLine($"That'll be {arrow.GetCost()} gold please!");

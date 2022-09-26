@@ -2,23 +2,24 @@ namespace _023_vin_fletchers_arrows.Models
 {
     public class Arrow
     {
-        public Arrowhead ArrowheadCore { get; set; }
-        public Fletching FletchingCore { get; set; }
-        public float SLengthCore { get; set; }
+        public Arrowhead ArrowheadCore { get; private set; }
+        public Fletching FletchingCore { get; private set; }
+        public float SLengthCore { get; private set; }
+        public string[] ArrowType { get; set; } = {"Beginner", "Marksman", "Elite", "Custom"};
 
-        public Arrow()
+        public Arrow() // Starting constructor
+        {
+            
+        }
+
+        public Arrow(string custom) // Custom arrow constructor
         {
             ArrowheadCore = ArrowheadSelect();
             FletchingCore = FletchingSelect();
             SLengthCore = ShaftLengthSelect();
         }
 
-        public Arrow(float num)
-        {
-            
-        }
-
-        public Arrow(Arrowhead arrowhead, Fletching fletching, float length)
+        private Arrow(Arrowhead arrowhead, Fletching fletching, float length) // Pre-made arrow constructor
         {
             ArrowheadCore = arrowhead;
             FletchingCore = fletching;
@@ -43,10 +44,11 @@ namespace _023_vin_fletchers_arrows.Models
 
         // Create pre-defined arrows
         public static Arrow CreateBeginnerArrow() => new Arrow(Arrowhead.Wood, Fletching.GooseFeathers, 75);
-        
         public static Arrow CreateMarksmanArrow() => new Arrow(Arrowhead.Steel, Fletching.GooseFeathers, 65);
-
         public static Arrow CreateEliteArrow() => new Arrow(Arrowhead.Steel, Fletching.Plastic, 95);
+        
+        // Create custom arrows
+        public Arrow CreateCustomArrow() => new Arrow(ArrowheadCore = ArrowheadSelect(), FletchingCore = FletchingSelect(), SLengthCore = ShaftLengthSelect());
 
         // Arrowhead selection
         private Arrowhead ArrowheadSelect()
